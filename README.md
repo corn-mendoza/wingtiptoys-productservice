@@ -29,28 +29,28 @@ Sample **wingtipcore-products-config.yml**
 To build using TBS:
 1. Ensure TBS is available by running: 
 
-    `pb stack status
+    `pb stack status`
     
 2. Create a project in TBS called `wingtipcore
 
-    `pb project create wingtipcore
+    `pb project create wingtipcore`
     
 3. Set the target project to wingtipcore
 
-    `pb project target wingtipcore
+    `pb project target wingtipcore`
     
 4. Add users to project
 
-    `pb project user add <username>
+    `pb project user add <username>`
     
 5. Create secret files for accessing git and the target repository
 
-    `pb secrets registry apply -f secrets/dockerhub-config.yml
-    `pb secrets git apply -f secrets/github-config.yml
+    `pb secrets registry apply -f secrets/dockerhub-config.yml`
+    `pb secrets git apply -f secrets/github-config.yml`
     
 6. Run the build
 
-    pb image apply -f wingtipcore-products-config.yml
+    `pb image apply -f wingtipcore-products-config.yml`
 
 
 ### Docker
