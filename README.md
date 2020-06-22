@@ -76,7 +76,7 @@ Sample **appsettings.secrets.json**
 
     {
         "ConnectionStrings": {
-            "WingtipToysProductServiceContext": "<connecrtion string>"
+            "WingtipToysProductServiceContext": "<_connection string_>"
         }    
     }  
 
