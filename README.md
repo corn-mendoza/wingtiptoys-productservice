@@ -15,7 +15,7 @@ A base azure-pipelines.yml file has been included in this project. The pipeline 
 For a great guide to install Azure DevOps build agent on your local kubernetes cluster, check out [Luciano's Guide](https://github.com/lsilvapvt/pcf-tools-belt/tree/master/azure/devops/agent).
 
 ### Tanzu Build Service
-To build the application image and deploy to a repository, create an image configuration file for the application.
+The following is an example of steps to build using TBS. To build the application image and deploy to a repository, create an image configuration file for the application.
 
 Sample **wingtipcore-products-config.yml**
 
@@ -31,7 +31,7 @@ To build using TBS:
 
     `pb stack status`
     
-2. Create a project in TBS called `wingtipcore
+2. Create a project in TBS called _wingtipcore_
 
     `pb project create wingtipcore`
     
