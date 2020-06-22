@@ -93,13 +93,13 @@ Sample **appsettings.secrets.json**
         apiVersion: extensions/v1beta1
         kind: Deployment
         metadata:
-            name: aspnet-core-secrets-demo
+            name: wingtiptoys-product-service-demo
         spec:
             replicas: 3
             template:
                 metadata:
                     labels:
-                        app: wingtiptoys-productservice
+                        app: wingtiptoys-product-service
                 spec:
                     containers:
                     - name: wtt-product-service
