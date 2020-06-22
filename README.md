@@ -1,6 +1,6 @@
-# wingtiptoys-productservice
+# Wingtip Toys Product Service
 
-Demo .NET Core WebAPI Service
+Demo .NET Core 3.1 WebAPI Service leveraging Steeltoe and accessing a SQL Server database. 
 
 ## Overview
 
