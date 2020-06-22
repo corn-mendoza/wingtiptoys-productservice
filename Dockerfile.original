@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["WingtipToys.ProductService.csproj", ""]
-RUN dotnet restore "./WingtipToys.ProductService.csproj"
+COPY ["WingtipToys.ProductService/WingtipToys.ProductService.csproj", "WingtipToys.ProductService/"]
+RUN dotnet restore "WingtipToys.ProductService/WingtipToys.ProductService.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/WingtipToys.ProductService"
 RUN dotnet build "WingtipToys.ProductService.csproj" -c Release -o /app/build
 
 FROM build AS publish
