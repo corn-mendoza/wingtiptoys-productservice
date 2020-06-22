@@ -18,12 +18,13 @@ For a great guide to install Azure DevOps build agent on your local kubernetes c
 To build the application image and deploy to a repository, create an image configuration file for the application.
 
 Sample wingtipcore-products-config.yml
-`source:
-`  git:
-`    url: https://github.com/corn-pivotal/wingtiptoys-productservice
-`    revision: master
-`image:
-`  tag: cjmendoza/wtt-product-service
+
+    source:
+      git:
+        url: https://github.com/corn-pivotal/wingtiptoys-productservice
+        revision: master
+    image:
+      tag: cjmendoza/wtt-product-service
 
 ### Docker
 A base Dockerfile has been included in this project to allow the application image to be built using Visual Studio or the Docker cli.
