@@ -90,7 +90,7 @@ Sample **appsettings.secrets.json**
 2. Create a deployment file for the application **deployment.yml**
 
 
-        apiVersion: extensions/v1beta1
+        apiVersion: apps/v1
         kind: Deployment
         metadata:
             name: wingtiptoys-product-service-demo
