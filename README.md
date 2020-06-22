@@ -89,33 +89,35 @@ Sample **appsettings.secrets.json**
     
 2. Create a deployment file for the application **deployment.yml**
 
-    apiVersion: extensions/v1beta1
-    kind: Deployment
-    metadata:
-        name: aspnet-core-secrets-demo
-    spec:
-        replicas: 3
-        template:
-            metadata:
-                labels:
-                    app: wingtiptoys-productservice
-            spec:
-                containers:
-                - name: wtt-product-service
-                  image: cjmendoza/wtt-product-service:latest
-                  ports:
-                - containerPort: 80
-                env:
-                - name: "ASPNETCORE_ENVIRONMENT"
-                  value: "Production"
-                volumeMounts:
+
+        apiVersion: extensions/v1beta1
+        kind: Deployment
+        metadata:
+            name: aspnet-core-secrets-demo
+        spec:
+            replicas: 3
+            template:
+                metadata:
+                    labels:
+                        app: wingtiptoys-productservice
+                spec:
+                    containers:
+                    - name: wtt-product-service
+                      image: cjmendoza/wtt-product-service:latest
+                      ports:
+                    - containerPort: 80
+                    env:
+                    - name: "ASPNETCORE_ENVIRONMENT"
+                      value: "Production"
+                    volumeMounts:
+                    - name: secrets
+                      mountPath: /app/secrets
+                      readOnly: true
+                volumes:
                 - name: secrets
-                  mountPath: /app/secrets
-                  readOnly: true
-            volumes:
-            - name: secrets
-              secret:
-                secretName: secret-appsettings
+                  secret:
+                    secretName: secret-appsettings
+
 
 3. Deploy the service using the deployment file.
 
