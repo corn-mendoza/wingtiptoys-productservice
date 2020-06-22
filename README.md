@@ -1,20 +1,25 @@
 # wingtiptoys-productservice
+
 Demo .NET Core WebAPI Service
 
 ## Overview
+
 Standalone project that can be used with Azure DevOps, Tanzu Build Service, Docker, Cloud Foundry, or Tanzu Kubernetes Grid. 
 
 ## Requirements
+
 This project is part of the WingTip Toys Store application designed to demonstrate Cloud Native principles using .NET Core. The product service requires the connection string to access the WingTip Toys DB hosted on SQL Server.
 
 # Building the Service
 
 ### Azure Devops
+
 A base azure-pipelines.yml file has been included in this project. The pipeline will need to be updated to also deploy the built container into an accessible repository.
 
 For a great guide to install Azure DevOps build agent on your local kubernetes cluster, check out [Luciano's Guide](https://github.com/lsilvapvt/pcf-tools-belt/tree/master/azure/devops/agent).
 
 ### Tanzu Build Service
+
 The following is an example of steps to build using TBS. To build the application image and deploy to a repository, create an image configuration file for the application.
 
 Sample **wingtipcore-products-config.yml**
@@ -55,14 +60,68 @@ To build using TBS:
 
 
 ### Docker
+
 A base Dockerfile has been included in this project to allow the application image to be built using Visual Studio or the Docker cli.
 
 ### Cloud Foundry
+
 A sample manifest file has been included to allow the app to be deployed using the cloud foundry cli and "cf push" command.
 
 
 # Deploying the Service
 
+This application is designed to load secrets from an optional file located in **secrets/appsettings.secrets.json**. All platforms can leverage this to inject sensitive SQL Server connection string information for the application or continue to use the appsettings.json file.
+
+Sample **appsettings.secrets.json**
+
+    {
+        "ConnectionStrings": {
+            "WingtipToysProductServiceContext": "<connecrtion string>"
+        }    
+    }  
+
+    
 ### Kubernetes
 
+1. Add the secret:
+
+    `kubectl create secret generic secret-appsettings --from-file=./appsettings.secrets.json`
+    
+2. Create a deployment file for the application **deployment.yml**
+
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    metadata:
+        name: aspnet-core-secrets-demo
+    spec:
+        replicas: 3
+        template:
+            metadata:
+                labels:
+                    app: wingtiptoys-productservice
+            spec:
+                containers:
+                - name: wtt-product-service
+                  image: cjmendoza/wtt-product-service:latest
+                  ports:
+                - containerPort: 80
+                env:
+                - name: "ASPNETCORE_ENVIRONMENT"
+                  value: "Production"
+                volumeMounts:
+                - name: secrets
+                  mountPath: /app/secrets
+                  readOnly: true
+            volumes:
+            - name: secrets
+              secret:
+                secretName: secret-appsettings
+
+3. Deploy the service using the deployment file.
+
+    `kubectl create -f deployment.yaml`
+    
+
 ### Cloud Foundry
+
+This service will take advantage of SCS Discovery Services if the application is bound via the service broker.
