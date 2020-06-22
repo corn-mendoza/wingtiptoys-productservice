@@ -27,8 +27,15 @@ namespace WingtipToys.ProductService
         {
             var builder = WebHost.CreateDefaultBuilder(args)
                 .UseDefaultServiceProvider(configure => configure.ValidateScopes = false)
-                .AddConfigServer()
+                .AddConfigServer()              
                 .UseStartup<Startup>();
+
+            // Load Kubernetes secrets file if available to load connection strings
+            builder.ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config.AddJsonFile("secrets/appsettings.secrets.json", optional: false, reloadOnChange: false);
+            });
+
             builder.ConfigureLogging((hostingContext, loggingBuilder) =>
             {
                 loggingBuilder.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
