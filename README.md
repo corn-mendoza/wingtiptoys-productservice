@@ -57,7 +57,7 @@ To build using TBS:
 
     `pb project user add <username>`
     
-5. Create secret files for accessing git and the target repository
+5. Load secret files for accessing git and the target repository
 
     `pb secrets registry apply -f secrets/dockerhub-config.yml`
     
