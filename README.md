@@ -147,8 +147,8 @@ Sample **appsettings.secrets.json**
                     env:
                     - name: "ASPNETCORE_ENVIRONMENT"
                       value: "Production"
-					- name: "PORT"
-					  value: "8080"
+		    - name: "PORT"
+		      value: "8080"
                     volumeMounts:
                     - name: secrets
                       mountPath: /app/secrets
