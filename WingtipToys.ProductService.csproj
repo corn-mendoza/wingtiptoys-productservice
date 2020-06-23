@@ -41,9 +41,5 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="scripts\" />
-  </ItemGroup>
-
 
 </Project>
