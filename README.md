@@ -25,6 +25,21 @@ Sample **wingtipcore-products-config.yml**
     image:
       tag: cjmendoza/wtt-product-service
 
+Sample **dockerhub-config.yml** secrets file
+
+    project: wingtipcore
+    registry: https://index.docker.io/v1/
+    username: xxxxxxxxx
+    password: xxxxxxxxx
+
+Sample **github-config.yml** secrets file
+
+    project: wingtipcore
+    repository: github.com/corn-pivotal/wingtipcore
+    username: xxxxxxxxxxx
+    password: xxxxxxxxxxx
+
+
 To build using TBS:
 1. Ensure TBS is available by running: 
 
