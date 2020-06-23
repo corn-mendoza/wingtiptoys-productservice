@@ -12,7 +12,7 @@ This project is part of the WingTip Toys Store application designed to demonstra
 
 ## Accessing the Product Service
 
-The Swagger UI has been implemented as part of the project and can be accessed at http://urltoapp/swagger/ once the service has been deployed.
+The Swagger UI has been implemented as part of the project and can be accessed at http://route-to-app/swagger/ after the service has been deployed.
 
 
 # Building the Service
