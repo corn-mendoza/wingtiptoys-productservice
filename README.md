@@ -63,6 +63,10 @@ To build using TBS:
 
 A base Dockerfile has been included in this project to allow the application image to be built using Visual Studio or the Docker cli.
 
+To build from the command line in the project directory:
+    
+    `docker build -f dockerfile --force-rm -t wingtiptoysproductservice .`
+
 ### Cloud Foundry
 
 A sample manifest file has been included to allow the app to be deployed using the cloud foundry cli and "cf push" command.
