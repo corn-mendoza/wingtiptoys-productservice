@@ -12,7 +12,7 @@ This project is part of the WingTip Toys Store application designed to demonstra
 
 # Building the Service
 
-### Tanzu Build Service
+## Tanzu Build Service
 
 The following is an example of steps to build using TBS. To build the application image and deploy to a repository, create an image configuration file for the application.
 
@@ -52,7 +52,8 @@ To build using TBS:
 
     `pb image apply -f wingtipcore-products-config.yml`
 
-### Cloud Foundry
+
+## Cloud Foundry
 
 A sample manifest file has been included to allow the app to be deployed using the cloud foundry cli and "cf push" command.
 
@@ -69,13 +70,14 @@ or
     cf push <appname>
     
 
-### Azure Devops
+## Azure Devops
 
 A base azure-pipelines.yml file has been included in this project. The pipeline will need to be updated to also deploy the built container into an accessible repository.
 
 For a great guide to install Azure DevOps build agent on your local kubernetes cluster, check out [Luciano's Guide](https://github.com/lsilvapvt/pcf-tools-belt/tree/master/azure/devops/agent).
 
-### Docker
+
+## Docker
 
 A base Dockerfile has been included in this project to allow the application image to be built using Visual Studio or the Docker cli.
 
@@ -97,7 +99,7 @@ Sample **appsettings.secrets.json**
     }  
 
     
-### Kubernetes
+## Kubernetes
 
 1. Add the secret:
 
@@ -140,6 +142,6 @@ Sample **appsettings.secrets.json**
     `kubectl create -f deployment.yaml`
     
 
-### Cloud Foundry
+## Cloud Foundry
 
 This service will take advantage of SCS Discovery Services if the application is bound via the service broker.
