@@ -71,7 +71,7 @@ To build from the command line in the project directory:
 
 A sample manifest file has been included to allow the app to be deployed using the cloud foundry cli and "cf push" command.
 
-To publish the application to push, run the publish command in the project directory:
+To push the application, run the dotnet publish command in the project directory:
 
     dotnet publish -o <output directory>
     
