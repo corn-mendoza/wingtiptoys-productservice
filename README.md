@@ -65,7 +65,7 @@ A base Dockerfile has been included in this project to allow the application ima
 
 To build from the command line in the project directory:
     
-    docker build -f dockerfile --force-rm -t wingtiptoysproductservice *"path to source"*
+    docker build -f dockerfile --force-rm -t wingtiptoysproductservice <path to source>
 
 ### Cloud Foundry
 
