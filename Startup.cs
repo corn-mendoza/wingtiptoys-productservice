@@ -31,6 +31,13 @@ namespace WingtipToys.ProductService
         {
             services.AddControllers();
 
+            // add OpenAPI v3 document for Swagger UI
+            services.AddOpenApiDocument(c =>
+            {
+                c.Title = "WTT Product Service API";
+                c.Version = "v1";
+            }); 
+
             services.AddCloudFoundryActuators(Configuration);
 
             try
@@ -69,6 +76,11 @@ namespace WingtipToys.ProductService
             {
                 endpoints.MapControllers();
             });
+
+            // Add Swagger/OpenAPI Support
+            app.UseOpenApi(); // serve OpenAPI/Swagger documents            
+            app.UseSwaggerUi3(); // serve Swagger UI
+            app.UseReDoc(); // serve ReDoc UI
         }
     }
 }
