@@ -33,7 +33,7 @@ namespace WingtipToys.ProductService
             // Load Kubernetes secrets file if available to load connection strings
             builder.ConfigureAppConfiguration((hostingContext, config) =>
             {
-                config.AddJsonFile("secrets/appsettings.secrets.json", optional: false, reloadOnChange: false);
+                config.AddJsonFile("secrets/appsettings.secrets.json", optional: true, reloadOnChange: false);
             });
 
             builder.ConfigureLogging((hostingContext, loggingBuilder) =>
