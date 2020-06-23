@@ -125,7 +125,7 @@ Sample **appsettings.secrets.json**
 
     `kubectl create secret generic secret-appsettings --from-file=./appsettings.secrets.json`
     
-2. Create a deployment file for the application **deployment.yml**
+2. Create a deployment file for the application **deployment.yml**. Your deployment will vary and the example below is for demo purposes only.
 
 
         apiVersion: apps/v1
@@ -143,10 +143,12 @@ Sample **appsettings.secrets.json**
                     - name: wtt-product-service
                       image: cjmendoza/wtt-product-service:latest
                       ports:
-                    - containerPort: 80
+                    - containerPort: 8080
                     env:
                     - name: "ASPNETCORE_ENVIRONMENT"
                       value: "Production"
+					- name: "PORT"
+					  value: "8080"
                     volumeMounts:
                     - name: secrets
                       mountPath: /app/secrets
@@ -155,7 +157,20 @@ Sample **appsettings.secrets.json**
                 - name: secrets
                   secret:
                     secretName: secret-appsettings
-
+		---
+		apiVersion: v1
+		kind: Service
+		metadata:
+	  		name: app-entrypoint
+	  		namespace: default
+		spec:
+	  		type: NodePort
+	  		selector:
+	    		app: wtt-product-service
+	  		ports:
+	  		- port: 8080
+	    	  targetPort: 8080
+	      	  nodePort: 30001    
 
 3. Deploy the service using the deployment file.
 
