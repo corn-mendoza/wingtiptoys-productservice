@@ -1,6 +1,6 @@
 # Wingtip Toys Product Service
 
-Demo .NET Core 3.1 WebAPI Service leveraging Steeltoe and accessing a SQL Server database. This application can use the same database that is created as part of the original WingTip Toys .NET Framework application.
+Demo .NET Core 3.1 WebAPI Service leveraging Steeltoe and accessing a SQL Server database. This application can use the same database that is created as part of the original WingTip Toys .NET Framework application. Scripts are also included in the _scripts_ folder to create and populate a standalone version of the database.
 
 ## Overview
 
